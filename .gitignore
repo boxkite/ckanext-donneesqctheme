@@ -1,0 +1,5 @@
+
+*.pyc
+ckanext_donneesqctheme.egg-info/*
+build/*
+dist/*
