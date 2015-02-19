@@ -3,3 +3,4 @@
 ckanext_donneesqctheme.egg-info/*
 build/*
 dist/*
+.DS_Store

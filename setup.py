@@ -15,5 +15,6 @@ setup(
     entry_points = """
         [ckan.plugins]
         donneesqc_theme = ckanext.donneesqctheme.plugins:CustomTheme
+        donneesqc_extrapages = ckanext.donneesqctheme.plugins:ContactPagesPlugin
     """
 )
