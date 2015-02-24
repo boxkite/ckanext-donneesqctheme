@@ -1,7 +1,11 @@
 import ckan.logic as logic
 
 from ckan.plugins import (toolkit, IConfigurer, SingletonPlugin, implements,
-    IRoutes, IConfigurer, ITemplateHelpers)
+    IRoutes, IConfigurer, ITemplateHelpers, IGroupForm)
+
+from ckan.lib.plugins import DefaultOrganizationForm
+from ckan.logic.schema import group_form_schema
+from ckan.logic.converters import convert_to_extras, convert_from_extras
 
 class CustomTheme(SingletonPlugin):
     implements(IConfigurer)
@@ -37,6 +41,36 @@ class ContactPagesPlugin(SingletonPlugin):
         return {
             'get_organizations': _get_organizations()
         }
+
+class OrgFormPlugin(SingletonPlugin, DefaultOrganizationForm):
+    implements(IGroupForm, inherit=True)
+
+    def is_fallback(self):
+        return True
+
+    def group_types(self):
+        return ['organization']
+
+    def group_form(self):
+        return 'organization/qc_org_form.html'
+
+    def form_to_db_schema(self):
+        schema = group_form_schema()
+
+        schema.update({
+            'email': [unicode, convert_to_extras]
+        })
+
+        return schema
+
+    def db_to_form_schema(self):
+        schema = group_form_schema()
+
+        schema.update({
+            'email': [convert_from_extras]
+        })
+
+        return schema
 
 def _get_organizations():
     orgs = [
