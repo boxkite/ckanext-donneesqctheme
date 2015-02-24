@@ -19,7 +19,7 @@ unflatten = dictization_functions.unflatten
 
 
 log = getLogger(__name__)
-       
+
 
 class SuggestController(base.BaseController):
 
@@ -49,7 +49,7 @@ class SuggestController(base.BaseController):
         except captcha.CaptchaError:
             error_msg = _(u'Bad Captcha. Please try again.')
             h.flash_error(error_msg)
-            return self.suggest_form(data_dict) 
+            return self.suggest_form(data_dict)
 
 
         errors = {}
@@ -77,7 +77,13 @@ class SuggestController(base.BaseController):
         else:
             # #1799 User has managed to register whilst logged in - warn user
             # they are not re-logged in as new user.
-            mail_to = config.get('email_to')
+
+            if data_dict['organization'] == 'all':
+                mail_to = config.get('email_to')
+            else:
+                mail_to = logic.get_action('organization_show')( {},
+                                    {'id': data_dict['organization']})['email']
+
             recipient_name = 'Donnees.Quebec'
             subject = 'Suggestion de jeu de donnees'
 
@@ -112,7 +118,7 @@ class SuggestController(base.BaseController):
         data = data or {}
         errors = errors or {}
         error_summary = error_summary or {}
-        vars = {'data': data, 'errors': errors, 'error_summary': error_summary}            
+        vars = {'data': data, 'errors': errors, 'error_summary': error_summary}
 
         c.form = base.render(suggest_new_form, extra_vars=vars)
 
@@ -173,7 +179,13 @@ class ContactController(base.BaseController):
         if len(errors) > 0:
             return self.suggest_form(data_dict, errors, error_summary)
         else:
-            mail_to = config.get('email_to')
+
+            if data_dict['organization'] == 'all':
+                mail_to = config.get('email_to')
+            else:
+                mail_to = logic.get_action('organization_show')( {},
+                                    {'id': data_dict['organization']})['email']
+                                    
             recipient_name = 'Donnees.Quebec'
             subject = 'CKAN - Contact-Question d\'un visiteur'
 
@@ -205,9 +217,8 @@ class ContactController(base.BaseController):
         data = data or {}
         errors = errors or {}
         error_summary = error_summary or {}
-        vars = {'data': data, 'errors': errors, 'error_summary': error_summary}            
+        vars = {'data': data, 'errors': errors, 'error_summary': error_summary}
 
         c.form = base.render(suggest_new_form, extra_vars=vars)
 
         return base.render('contact/contact_base.html')
-    
