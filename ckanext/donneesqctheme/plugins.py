@@ -39,7 +39,9 @@ class ContactPagesPlugin(SingletonPlugin):
         }
 
 def _get_organizations():
-    orgs = []
+    orgs = [
+        {'text': 'All Organizations', 'value': 'all'}
+    ]
     org_list = logic.get_action('organization_list')({}, {})
     for o in org_list:
         org = logic.get_action('organization_show')({}, {'id': o})
