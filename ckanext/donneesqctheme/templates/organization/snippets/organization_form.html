@@ -1,0 +1,8 @@
+{% ckan_extends %}
+
+{% block basic_fields %}
+    {{ super() }}
+
+    {{ form.input('email', label=_('Email'), id='field-email', type='email', value=data.email, error=errors.email, classes=['control-medium'], is_required=true) }}
+
+{% endblock %}

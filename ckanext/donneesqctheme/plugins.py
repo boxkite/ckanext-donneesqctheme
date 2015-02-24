@@ -6,6 +6,9 @@ from ckan.plugins import (toolkit, IConfigurer, SingletonPlugin, implements,
 from ckan.lib.plugins import DefaultOrganizationForm
 from ckan.logic.schema import group_form_schema
 from ckan.logic.converters import convert_to_extras, convert_from_extras
+from ckan.lib.navl.validators import ignore_missing
+
+from ckanext.hierarchy.plugin import HierarchyForm
 
 class CustomTheme(SingletonPlugin):
     implements(IConfigurer)
@@ -39,10 +42,10 @@ class ContactPagesPlugin(SingletonPlugin):
 
     def get_helpers(self):
         return {
-            'get_organizations': _get_organizations()
+            'get_organizations': _get_organizations
         }
 
-class OrgFormPlugin(SingletonPlugin, DefaultOrganizationForm):
+class OrgFormPlugin(HierarchyForm):
     implements(IGroupForm, inherit=True)
 
     def is_fallback(self):
@@ -51,14 +54,11 @@ class OrgFormPlugin(SingletonPlugin, DefaultOrganizationForm):
     def group_types(self):
         return ['organization']
 
-    def group_form(self):
-        return 'organization/qc_org_form.html'
-
     def form_to_db_schema(self):
         schema = group_form_schema()
 
         schema.update({
-            'email': [unicode, convert_to_extras]
+            'email': [ignore_missing, convert_to_extras]
         })
 
         return schema
@@ -67,10 +67,11 @@ class OrgFormPlugin(SingletonPlugin, DefaultOrganizationForm):
         schema = group_form_schema()
 
         schema.update({
-            'email': [convert_from_extras]
+            'email': [convert_from_extras, ignore_missing]
         })
 
         return schema
+
 
 def _get_organizations():
     orgs = [
