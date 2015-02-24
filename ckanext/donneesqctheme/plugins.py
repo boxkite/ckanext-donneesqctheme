@@ -1,5 +1,7 @@
+import ckan.logic as logic
 
-from ckan.plugins import toolkit, IConfigurer, SingletonPlugin, implements, IRoutes, IConfigurer
+from ckan.plugins import (toolkit, IConfigurer, SingletonPlugin, implements,
+    IRoutes, IConfigurer, ITemplateHelpers)
 
 class CustomTheme(SingletonPlugin):
     implements(IConfigurer)
@@ -10,9 +12,10 @@ class CustomTheme(SingletonPlugin):
 
 
 class ContactPagesPlugin(SingletonPlugin):
-    
+
     implements(IRoutes, inherit=True)
     implements(IConfigurer, inherit=True)
+    implements(ITemplateHelpers, inherit=True)
 
     def update_config(self, config):
         config['ckan.resource_proxy_enabled'] = True
@@ -29,3 +32,17 @@ class ContactPagesPlugin(SingletonPlugin):
 
 
         return m
+
+    def get_helpers(self):
+        return {
+            'get_organizations': _get_organizations()
+        }
+
+def _get_organizations():
+    orgs = []
+    org_list = logic.get_action('organization_list')({}, {})
+    for o in org_list:
+        org = logic.get_action('organization_show')({}, {'id': o})
+        orgs.append({'text': org['display_name'], 'value': o})
+
+    return orgs
