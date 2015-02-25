@@ -1,7 +1,7 @@
 import ckan.logic as logic
 
 from ckan.plugins import (toolkit, IConfigurer, SingletonPlugin, implements,
-    IRoutes, IConfigurer, ITemplateHelpers, IGroupForm)
+    IRoutes, IConfigurer, ITemplateHelpers, IGroupForm, IPackageController)
 
 from ckan.lib.plugins import DefaultOrganizationForm
 from ckan.logic.schema import group_form_schema
@@ -47,7 +47,7 @@ class OrgFormPlugin(HierarchyForm):
     implements(IGroupForm, inherit=True)
 
     def is_fallback(self):
-        return True
+        return False
 
     def group_types(self):
         return ['organization']
@@ -69,6 +69,16 @@ class OrgFormPlugin(HierarchyForm):
         })
 
         return schema
+
+class PackagePlugin(SingletonPlugin):
+    implements(IPackageController, inherit=True)
+
+    def before_view(self, pkg_dict):
+        #fetch related items
+        related_list = logic.get_action('related_list')({}, pkg_dict)
+        pkg_dict['related_list'] = related_list
+
+        return pkg_dict
 
 
 def _get_organizations():
