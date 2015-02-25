@@ -36,8 +36,6 @@ class ContactPagesPlugin(SingletonPlugin):
                     controller='ckanext.donneesqctheme.controller:ContactController',
                     action='contact_form')
 
-
-
         return m
 
     def get_helpers(self):

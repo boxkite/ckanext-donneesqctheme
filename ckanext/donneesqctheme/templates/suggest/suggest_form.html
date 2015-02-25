@@ -11,7 +11,7 @@
 
     {{ form.input('category', label=_('Category'), id='field-category', value=data.category, error=errors.category, placeholder=_('eg. Environment, Finance, Park, etc.'), classes=['control-medium']) }}
 
-    {{ form.select('organization', label=_('Organization'), id='field-organization', options=h.get_organizations , error=errors.organization, classes=['control-medium']) }}
+    {{ form.select('organization', label=_('Organization'), id='field-organization', options=h.get_organizations() , error=errors.organization, classes=['control-medium']) }}
 
     {{ form.markdown('suggestion', label=_('Your Request'), id='field-suggestion', value=data.suggestion, error=errors.suggestion, placeholder=_('What data are you looking for and why?'), is_required=true) }}
 
