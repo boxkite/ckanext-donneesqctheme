@@ -8,13 +8,17 @@
             "field_name": "title",
             "label": "Title",
             "preset": "title",
-            "form_placeholder": "eg. A descriptive title"
+            "form_placeholder": "eg. A descriptive title",
+            "form_attrs": {
+                "data-module": "slug-preview-target-title"
+            }
         },
         {
             "field_name": "name",
             "label": "URL",
             "preset": "dataset_slug",
-            "form_placeholder": "eg. my-dataset"
+            "form_placeholder": "eg. my-dataset",
+            "form_snippet": "slug_qc.html"
         },
         {
             "field_name": "notes",
@@ -37,7 +41,10 @@
             "field_name": "owner_org",
             "label": "Organization",
             "preset": "dataset_organization",
-            "validators": "not_empty owner_org_validator unicode"
+            "validators": "not_empty owner_org_validator unicode",
+            "form_attrs": {
+                "data-module": "slug-preview-target-org"
+            }
         },
         {
             "field_name": "url",

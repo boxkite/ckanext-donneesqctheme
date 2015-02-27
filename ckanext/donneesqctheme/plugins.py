@@ -72,6 +72,10 @@ class OrgFormPlugin(HierarchyForm):
 
 class PackagePlugin(SingletonPlugin):
     implements(IPackageController, inherit=True)
+    implements(IConfigurer)
+
+    def update_config(self, config):
+        toolkit.add_resource('fanstatic', 'donneesqc')
 
     def before_view(self, pkg_dict):
         #fetch related items
