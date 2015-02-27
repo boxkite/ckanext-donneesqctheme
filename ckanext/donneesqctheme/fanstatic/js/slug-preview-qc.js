@@ -26,6 +26,21 @@ this.ckan.module('slug-preview-target-title', {
     }
 });
 
+this.ckan.module('slug-preview-target-org', {
+    initialize: function () {
+        var sandbox = this.sandbox;
+        var options = this.options;
+        var el = this.el;
+
+        // Make sure there isn't a value in the field already...
+        el.on('change', function (event) {
+            sandbox.publish('slug-target-changed',
+                    this.options[this.selectedIndex].innerHTML);
+            //slug.val(this.value).trigger('change');
+        });
+    }
+});
+
 this.ckan.module('slug-preview-slug-qc', function (jQuery, _) {
     return {
         options: {
@@ -90,7 +105,10 @@ this.ckan.module('slug-preview-slug-qc', function (jQuery, _) {
             // Watch for updates to the target field and update the hidden slug field
             // triggering the "change" event manually.
             sandbox.subscribe('slug-target-changed', function (value) {
-                slug.val(value).trigger('change');
+                //HACK - manually construct the value
+                var org = $('#field-organizations option:selected').text();
+                var name = $('#field-title').val();
+                slug.val(org + '-' + name).trigger('change');
             });
         }
     };

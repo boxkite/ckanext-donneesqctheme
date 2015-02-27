@@ -42,9 +42,7 @@
             "label": "Organization",
             "preset": "dataset_organization",
             "validators": "not_empty owner_org_validator unicode",
-            "form_attrs": {
-                "data-module": "slug-preview-target-org"
-            }
+            "form_snippet": "organization_qc.html"
         },
         {
             "field_name": "url",
