@@ -63,9 +63,6 @@ class OrgPlugin(HierarchyForm):
 
         return schema
 
-    def before_view(self, pkg_dict):
-        return pkg_dict
-
     def db_to_form_schema(self):
         schema = group_form_schema()
 
@@ -74,6 +71,14 @@ class OrgPlugin(HierarchyForm):
         })
 
         return schema
+
+    def before_view(self, org_dict):
+        org_dict['group_activity_stream'] = logic.get_action(
+            'organization_activity_list')(
+                {},
+                {'id': org_dict['id'], 'offset': 0})
+
+        return org_dict
 
 class PackagePlugin(SingletonPlugin):
     implements(IPackageController, inherit=True)
