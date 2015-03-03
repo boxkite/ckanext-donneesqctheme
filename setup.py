@@ -16,7 +16,7 @@ setup(
         [ckan.plugins]
         donneesqc_theme = ckanext.donneesqctheme.plugins:CustomTheme
         donneesqc_extrapages = ckanext.donneesqctheme.plugins:ContactPagesPlugin
-        donneesqc_org_form = ckanext.donneesqctheme.plugins:OrgFormPlugin
+        donneesqc_orgs = ckanext.donneesqctheme.plugins:OrgPlugin
         donneesqc_package = ckanext.donneesqctheme.plugins:PackagePlugin
     """
 )

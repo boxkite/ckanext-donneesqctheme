@@ -1,7 +1,8 @@
 import ckan.logic as logic
 
 from ckan.plugins import (toolkit, IConfigurer, SingletonPlugin, implements,
-    IRoutes, IConfigurer, ITemplateHelpers, IGroupForm, IPackageController)
+    IRoutes, IConfigurer, ITemplateHelpers, IGroupForm, IPackageController,
+    IOrganizationController)
 
 from ckan.lib.plugins import DefaultOrganizationForm
 from ckan.logic.schema import group_form_schema
@@ -43,8 +44,9 @@ class ContactPagesPlugin(SingletonPlugin):
             'get_organizations': _get_organizations
         }
 
-class OrgFormPlugin(HierarchyForm):
+class OrgPlugin(HierarchyForm):
     implements(IGroupForm, inherit=True)
+    implements(IOrganizationController, inherit=True)
 
     def is_fallback(self):
         return False
@@ -60,6 +62,9 @@ class OrgFormPlugin(HierarchyForm):
         })
 
         return schema
+
+    def before_view(self, pkg_dict):
+        return pkg_dict
 
     def db_to_form_schema(self):
         schema = group_form_schema()
