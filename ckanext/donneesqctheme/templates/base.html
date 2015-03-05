@@ -1,0 +1,8 @@
+{% ckan_extends %}
+
+{% block styles %}
+  {{ super() }}
+  {% resource 'donneesqc/css/custom.css' %}
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+  <link type="application/atom+xml" rel="alternate" href="{{ h.url('/', locale='default', qualified=true) }}feeds/dataset.atom"/>
+{% endblock %}

@@ -1,0 +1,18 @@
+{%
+set output =  h.get_action('package_search', {'rows': 3, 'sort': 'views_recent desc'})
+%}
+
+        <div class="box">
+          <section class="group-list module module-narrow module-shallow">
+            <header class="module-heading media">
+              <div class="media-content">
+                <h3 class="media-heading">Les populaires</h3>
+                <p>Jeux de données les plus consultés durant les 14 derniers jours</p>
+              </div>
+            </header>
+       {% set list_class = "unstyled dataset-list" %}
+      {% set item_class = "dataset-item module-content" %}
+      {% snippet 'snippets/package_list.html', packages=output.results, list_class=list_class, item_class=item_class, truncate=120 %}           
+         </section>
+
+        </div>
