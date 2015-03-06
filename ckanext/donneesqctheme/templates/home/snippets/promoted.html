@@ -1,9 +1,10 @@
 {% set intro = g.site_intro_text %}
+{% set carousel = h.get_carousel_content() %}
 
 <div class="module-content box intro-text">
   <header>
-    {% if intro %}
-      {{ h.render_markdown(intro) }}
+    {% if carousel %}
+      {{carousel|safe}}
     {% else %}
       <h1 class="page-heading">{{ _("Welcome to CKAN") }}</h1>
       <p>
@@ -13,4 +14,9 @@
       </p>
     {% endif %}
   </header>
+
+
+
+
+
 </div>

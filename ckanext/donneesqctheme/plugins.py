@@ -11,6 +11,12 @@ from ckan.lib.navl.validators import ignore_missing
 
 from ckanext.hierarchy.plugin import HierarchyForm
 
+import time
+import requests
+import os
+import calendar
+import codecs
+
 class CustomTheme(SingletonPlugin):
     implements(IConfigurer)
 
@@ -41,7 +47,8 @@ class ContactPagesPlugin(SingletonPlugin):
 
     def get_helpers(self):
         return {
-            'get_organizations': _get_organizations
+            'get_organizations': _get_organizations,
+            'get_carousel_content': _get_carousel_content
         }
 
 class OrgPlugin(HierarchyForm):
@@ -105,3 +112,23 @@ def _get_organizations():
         orgs.append({'text': org['display_name'], 'value': o})
 
     return orgs
+
+def _get_carousel_content():
+    #TODO: Put path, url and cache in config params
+    path = '/tmp/carousel'
+    carousel_url = "http://yoshi.boxkite.ca:8000/?q=block/export/views/carousel-block"
+    cache_delay = 0
+
+    now = calendar.timegm(time.gmtime())
+
+    carousel_html = ''
+    if os.path.isfile(path) == False or (now - os.path.getmtime(path)) > cache_delay:
+        r = requests.get(carousel_url)
+        f = codecs.open(path ,'w', encoding='utf8')
+        f.write(r.text)
+        carousel_html += r.text
+    else:
+        f = codecs.open(path ,'r', encoding='utf8')
+        carousel_html += f.read()
+
+    return carousel_html
