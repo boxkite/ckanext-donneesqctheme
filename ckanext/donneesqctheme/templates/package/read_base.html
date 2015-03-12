@@ -12,21 +12,17 @@
 
 {% endblock %}
 
-{% block primary_content_inner %}
-    {{ super() }}
+
+  {% block package_info %}
+  {% endblock %}
+    
+
+{% block package_social %}
 
     {% if pkg['related_list'] %}
-        {% snippet "related/snippets/related_list.html", related_items=pkg['related_list'], pkg_id=pkg.name %}
-    {% else %}
-        <p class="empty">{{ _('No related items') }}</p>
+        {% snippet "related/snippets/related_list_small.html", related_items=pkg['related_list'], pkg_id=pkg.name %}
+
     {% endif %}
 
-    {% if pkg['groups'] %}
-    <form method="post">
-        {% snippet 'group/snippets/group_list.html', groups=pkg['groups'] %}
-    </form>
-    {% else %}
-        <p class="empty">{{ _('There are no groups associated with this dataset') }}</p>
-    {% endif %}
-
-{% endblock %}
+    {{ super() }}
+  {% endblock %}

@@ -48,7 +48,9 @@ class ContactPagesPlugin(SingletonPlugin):
     def get_helpers(self):
         return {
             'get_organizations': _get_organizations,
-            'get_carousel_content': _get_carousel_content
+            'get_carousel_content': _get_carousel_content,
+            'get_group_list' : _get_group_list
+
         }
 
 class OrgPlugin(HierarchyForm):
@@ -113,8 +115,16 @@ def _get_organizations():
 
     return orgs
 
+def _get_group_list():
+
+    groups = logic.get_action('group_list')(
+        data_dict={'all_fields': True})    
+
+    return groups
+
 def _get_carousel_content():
     #TODO: Put path, url and cache in config params
+    '''
     path = '/tmp/carousel'
     carousel_url = "http://yoshi.boxkite.ca:8000/?q=block/export/views/carousel-block"
     cache_delay = 0
@@ -130,5 +140,5 @@ def _get_carousel_content():
     else:
         f = codecs.open(path ,'r', encoding='utf8')
         carousel_html += f.read()
-
-    return carousel_html
+    '''
+    return "<div>meuh</div>" 

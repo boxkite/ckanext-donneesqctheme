@@ -396,7 +396,7 @@ a.tag:active {
 .homepage .module-search .search-by-cat h3 {
   display: none;
 }
-.homepage .module-search .media-grid {
+.homepage .module-search .custom-media-grid {
   list-style: none;
   padding-bottom: 30px;
   width: 780px;
@@ -404,16 +404,16 @@ a.tag:active {
   border: 0px;
   background: white;
 }
-.homepage .module-search .media-grid:before,
-.homepage .module-search .media-grid:after {
+.homepage .module-search .custom-media-grid:before,
+.homepage .module-search .custom-media-grid:after {
   display: table;
   content: "";
   line-height: 0;
 }
-.homepage .module-search .media-gridafter {
+.homepage .module-search .custom-media-gridafter {
   clear: both;
 }
-.homepage .module-search .media-item {
+.homepage .module-search .custom-media-item {
   position: relative;
   float: left;
   padding: 15px 25px;
@@ -422,29 +422,29 @@ a.tag:active {
   width: 145px;
   min-height: 150px;
 }
-.homepage .module-search .media-item .img-container {
+.homepage .module-search .custom-media-item .img-container {
   width: 100px;
   height: 100px;
   margin: 0 auto;
 }
-.homepage .module-search .media-item img {
+.homepage .module-search .custom-media-item img {
   opacity: 1;
   filter: alpha(opacity=100);
   /* For IE8 and earlier */
 }
-.homepage .module-search .media-item:hover img {
+.homepage .module-search .custom-media-item:hover img {
   opacity: 0.35;
   filter: alpha(opacity=35);
   /* For IE8 and earlier */
   -webkit-filter: grayscale(100%);
 }
-.homepage .module-search .media-item span {
+.homepage .module-search .custom-media-item span {
   display: block;
   color: #333333;
   font-size: 140%;
   margin-top: 5px;
 }
-.homepage .module-search .media-item a:hover {
+.homepage .module-search .custom-media-item a:hover {
   text-decoration: none;
 }
 .homepage .row2 {

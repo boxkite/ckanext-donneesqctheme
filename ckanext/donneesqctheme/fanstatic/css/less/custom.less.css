@@ -453,7 +453,7 @@ margin: 0px;
       }
     }
 
-    .media-grid {
+    .custom-media-grid {
         list-style: none;
         padding-bottom: 30px;
         width: 780px;
@@ -472,7 +472,7 @@ margin: 0px;
         }
     }
 
-    .media-item {
+    .custom-media-item {
         position: relative;
         float: left;
         padding: 15px 25px;

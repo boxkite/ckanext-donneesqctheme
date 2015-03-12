@@ -1,0 +1,17 @@
+{% ckan_extends %}
+
+
+{% block package_description %}
+    {% if pkg['groups'] %}
+        <div class="pkg-categories" style="float:right">
+        <h3>Catégories</h3>
+            <ul>
+            {% for group in pkg['groups'] %}
+                <li>{{group.display_name}}</li>
+            {% endfor %}
+            </ul>
+        </div>
+
+    {% endif %}
+    {{ super() }}
+{% endblock %}

@@ -1,0 +1,24 @@
+
+{#
+Displays a single related item.
+
+related - The related item dict.
+pkg_id  - The id of the owner package. If present the edit button will be
+          displayed.
+
+Example:
+
+
+
+#}
+{% set placeholder_map = {
+'application': h.url_for_static('/base/images/placeholder-application.png')
+} %}
+{% set tooltip = _('Go to {related_item_type}').format(related_item_type=related.type|replace('_', ' ')|title) %}
+<li class="item media-item">
+  <img src="{{ related.image_url or placeholder_map[related.type] or h.url_for_static('/base/images/placeholder-image.png') }}" alt="{{ related.title }}" class="media-image" style="width:100px">
+  <h3 class="media-heading">{{ related.title }}</h3>
+  <a class="media-view" href="{{ related.url }}" target="_blank" title="{{ tooltip }}">
+    <span>{{ related.description }}</span>
+  </a>
+</li>
