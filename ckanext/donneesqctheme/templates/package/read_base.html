@@ -7,7 +7,7 @@
         {{ h.build_nav_icon('dataset_groups', _('Groups'), id=pkg.name) }}
         {{ h.build_nav_icon('related_list', _('Related'), id=pkg.name) }}
     {% endif %}
-    
+
     {{ h.build_nav_icon('dataset_activity', _('Activity Stream'), id=pkg.name) }}
 
 {% endblock %}
@@ -15,7 +15,7 @@
 
   {% block package_info %}
   {% endblock %}
-    
+
 
 {% block package_social %}
 
@@ -25,4 +25,4 @@
     {% endif %}
 
     {{ super() }}
-  {% endblock %}
+{% endblock %}

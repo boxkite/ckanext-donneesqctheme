@@ -1,6 +1,5 @@
 {% ckan_extends %}
 
-
 {% block package_description %}
     {% if pkg['groups'] %}
         <div class="pkg-categories" style="float:right">
@@ -14,4 +13,18 @@
 
     {% endif %}
     {{ super() }}
+{% endblock %}
+
+{% block package_resources %}
+
+    {% if pkg['view'] %}
+        {% snippet 'package/snippets/resource_view.html',
+            resource_view = pkg['view'],
+            resource = pkg['view_res'],
+            package = pkg
+        %}
+    {% endif %}
+
+    {{ super() }}
+
 {% endblock %}
