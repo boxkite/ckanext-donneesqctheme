@@ -111,9 +111,8 @@ class PackagePlugin(SingletonPlugin):
             model.ResourceView.featured == True
         ).first()
 
-        pkg_dict['view'] = md.resource_view_dictize(view, context)
-
-        if pkg_dict['view']:
+        if view:
+            pkg_dict['view'] = md.resource_view_dictize(view, context)
             pkg_dict['view_res'] = [res for res in pkg_dict['resources']
                     if res['id'] == pkg_dict['view']['resource_id']][0]
 
