@@ -1,4 +1,6 @@
 import ckan.logic as logic
+import ckan.model as model
+import ckan.lib.dictization.model_dictize as md
 
 from ckan.plugins import (toolkit, IConfigurer, SingletonPlugin, implements,
     IRoutes, IConfigurer, ITemplateHelpers, IGroupForm, IPackageController,
@@ -101,6 +103,19 @@ class PackagePlugin(SingletonPlugin):
         related_list = logic.get_action('related_list')({}, pkg_dict)
         pkg_dict['related_list'] = related_list
 
+        res_ids = [res['id'] for res in pkg_dict['resources']]
+
+        context = {'model': model, 'session': model.Session}
+        view = model.Session.query(model.ResourceView).filter(
+            model.ResourceView.resource_id.in_(res_ids)).filter(
+            model.ResourceView.featured == True
+        ).first()
+
+        if view:
+            pkg_dict['view'] = md.resource_view_dictize(view, context)
+            pkg_dict['view_res'] = [res for res in pkg_dict['resources']
+                    if res['id'] == pkg_dict['view']['resource_id']][0]
+
         return pkg_dict
 
 
@@ -118,7 +133,7 @@ def _get_organizations():
 def _get_group_list():
 
     groups = logic.get_action('group_list')(
-        data_dict={'all_fields': True})    
+        data_dict={'all_fields': True})
 
     return groups
 
