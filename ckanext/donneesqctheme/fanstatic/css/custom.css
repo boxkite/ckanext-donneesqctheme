@@ -158,6 +158,15 @@ a.tag:active {
   -moz-box-shadow: 0 0 0 0px;
   box-shadow: 0 0 0 0px;
 }
+.wrapper {
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
 .fa-icon {
   font-family: FontAwesome;
   font-weight: normal;
@@ -230,6 +239,9 @@ a.tag:active {
 .masthead .navigation .nav-pills li a:hover,
 .masthead .navigation .nav-pills li.active a {
   background-color: #fff;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 .masthead .navigation .nav-pills li.active a {
   color: #000;

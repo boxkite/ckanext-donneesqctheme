@@ -171,6 +171,15 @@ a.tag:hover, a.tag:active {
   .no-shadow;
 }
 
+.wrapper {
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0; 
+  -webkit-box-shadow: none; 
+  -moz-box-shadow: none;
+   box-shadow: none;
+}
 .fa-icon {
   font-family: FontAwesome;
   font-weight: normal;
@@ -251,6 +260,9 @@ a.tag:hover, a.tag:active {
 
         li a:hover, li.active a {
           background-color: #fff;
+          -webkit-box-shadow: none;
+          -moz-box-shadow: none;
+          box-shadow: none;
         }
 
         li.active a {

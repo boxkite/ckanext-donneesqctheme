@@ -123,22 +123,26 @@ def _get_group_list():
     return groups
 
 def _get_carousel_content():
-    #TODO: Put path, url and cache in config params
-    '''
+    #TODO: Put path, url and cache in config params and generate error when falling in the except
+
     path = '/tmp/carousel'
     carousel_url = "http://yoshi.boxkite.ca:8000/?q=block/export/views/carousel-block"
     cache_delay = 0
 
     now = calendar.timegm(time.gmtime())
+    try: 
+        carousel_html = ''
+        if os.path.isfile(path) == False or (now - os.path.getmtime(path)) > cache_delay:
+            r = requests.get(carousel_url, timeout=0.1)
+            f = codecs.open(path ,'w', encoding='utf8')
+            f.write(r.text)
+            carousel_html += r.text
+        else:
+            f = codecs.open(path ,'r', encoding='utf8')
+            carousel_html += f.read()
+    except requests.exceptions.ConnectionError:
+        return None
+    except requests.exceptions.Timeout:
+        return None
 
-    carousel_html = ''
-    if os.path.isfile(path) == False or (now - os.path.getmtime(path)) > cache_delay:
-        r = requests.get(carousel_url)
-        f = codecs.open(path ,'w', encoding='utf8')
-        f.write(r.text)
-        carousel_html += r.text
-    else:
-        f = codecs.open(path ,'r', encoding='utf8')
-        carousel_html += f.read()
-    '''
-    return "<div>meuh</div>" 
+    return carousel_html
