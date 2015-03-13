@@ -16,9 +16,9 @@ Example:
 } %}
 {% set tooltip = _('Go to {related_item_type}').format(related_item_type=related.type|replace('_', ' ')|title) %}
 <li class="item media-item">
-  <img src="{{ related.image_url or placeholder_map[related.type] or h.url_for_static('/base/images/placeholder-image.png') }}" alt="{{ related.title }}" class="media-image" style="width:100px">
+  <img src="{{ related.image_url or placeholder_map[related.type] or h.url_for_static('/base/images/placeholder-image.png') }}" alt="{{ related.title }}" class="media-image">
   <h3 class="media-heading">{{ related.title }}</h3>
-  <a class="media-view" href="{{ related.url }}" target="_blank" title="{{ tooltip }}">
+  <a class="media-view" href="{{ related.url }}" target="_blank" title="{{ related.description }}">
     <span>{{ related.description }}</span>
   </a>
 </li>

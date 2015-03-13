@@ -11,8 +11,8 @@ Example:
   {% snippet "related/snippets/related_list.html", related_items=c.pkg.related, pkg_id=c.pkg.name %}
 
 #}
-<h3>Utilisations de ce jeu de données</h3>
-<ul class="media-grid">
+<h2 class="module-heading"><i class="icon-medium icon-share"></i> {{ _('Related') }}</h2>
+<ul class="mini-related">
   {% for related in related_items %}
     {% snippet "related/snippets/related_item_small.html", pkg_id=pkg_id, related=related, position=loop.index %}
   {% endfor %}
