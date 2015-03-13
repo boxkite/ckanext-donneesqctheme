@@ -145,10 +145,10 @@ def _get_carousel_content():
     cache_delay = 0
 
     now = calendar.timegm(time.gmtime())
-    try: 
+    try:
         carousel_html = ''
         if os.path.isfile(path) == False or (now - os.path.getmtime(path)) > cache_delay:
-            r = requests.get(carousel_url, timeout=0.1)
+            r = requests.get(carousel_url, timeout=1)
             f = codecs.open(path ,'w', encoding='utf8')
             f.write(r.text)
             carousel_html += r.text
