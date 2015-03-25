@@ -1,10 +1,11 @@
 import ckan.logic as logic
 import ckan.model as model
 import ckan.lib.dictization.model_dictize as md
+import logging
 
 from ckan.plugins import (toolkit, IConfigurer, SingletonPlugin, implements,
     IRoutes, IConfigurer, ITemplateHelpers, IGroupForm, IPackageController,
-    IOrganizationController)
+    IOrganizationController, IConfigurable)
 
 from ckan.lib.plugins import DefaultOrganizationForm
 from ckan.logic.schema import group_form_schema
@@ -19,6 +20,8 @@ import os
 import calendar
 import codecs
 
+log = logging.getLogger('ckanext.donneesqctheme')
+
 class CustomTheme(SingletonPlugin):
     implements(IConfigurer)
 
@@ -32,9 +35,25 @@ class ContactPagesPlugin(SingletonPlugin):
     implements(IRoutes, inherit=True)
     implements(IConfigurer, inherit=True)
     implements(ITemplateHelpers, inherit=True)
+    implements(IConfigurable, inherit=True)
 
     def update_config(self, config):
         config['ckan.resource_proxy_enabled'] = True
+
+    def configure(self, config):
+
+        try:
+            self.carousel_url = config['donneesqc.carousel_url']
+            self.last_articles_url = config['donneesqc.last_articles_url']
+            self.tmp = config['donneesqc.tmp_dir']
+            self.delay = config['donneesqc.cache_delay']
+
+        except KeyError:
+            #Should we throw an error message?
+            self.carousel_url = None
+            self.last_articles_url = None
+            self.tmp = None
+            self.delay = None
 
     def before_map(self, m):
         m.connect('suggest' ,'/suggest',
@@ -47,10 +66,48 @@ class ContactPagesPlugin(SingletonPlugin):
 
         return m
 
+    def _get_content(self,  url, name):
+        path = self.tmp + name
+        cache_delay = self.delay
+
+        now = calendar.timegm(time.gmtime())
+        try:
+            html = ''
+            if os.path.isfile(path) == False or (now - os.path.getmtime(path)) > cache_delay:
+                r = requests.get(url, timeout=1)
+                f = codecs.open(path ,'w', encoding='utf8')
+                f.write(r.text)
+                html += r.text
+            else:
+                f = codecs.open(path ,'r', encoding='utf8')
+                html += f.read()
+        except requests.exceptions.ConnectionError:
+            return None
+        except requests.exceptions.Timeout:
+            return None  
+
+        return html      
+
+    def _get_carousel_content(self):
+        if self.carousel_url != None:
+            return self._get_content(self.carousel_url, 'carousel')
+        else:
+            return None
+ 
+
+    def _get_last_articles_content(self):
+        if self.last_articles_url != None:
+            return self._get_content(self.last_articles_url, 'articles')
+        else:
+            return None
+
+        
+
     def get_helpers(self):
         return {
             'get_organizations': _get_organizations,
-            'get_carousel_content': _get_carousel_content,
+            'get_carousel_content': self._get_carousel_content,
+            'get_last_articles_content': self._get_last_articles_content,
             'get_group_list' : _get_group_list
 
         }
@@ -137,27 +194,4 @@ def _get_group_list():
 
     return groups
 
-def _get_carousel_content():
-    #TODO: Put path, url and cache in config params and generate error when falling in the except
 
-    path = '/tmp/carousel'
-    carousel_url = "http://yoshi.boxkite.ca:8000/?q=block/export/views/carousel-block"
-    cache_delay = 0
-
-    now = calendar.timegm(time.gmtime())
-    try:
-        carousel_html = ''
-        if os.path.isfile(path) == False or (now - os.path.getmtime(path)) > cache_delay:
-            r = requests.get(carousel_url, timeout=1)
-            f = codecs.open(path ,'w', encoding='utf8')
-            f.write(r.text)
-            carousel_html += r.text
-        else:
-            f = codecs.open(path ,'r', encoding='utf8')
-            carousel_html += f.read()
-    except requests.exceptions.ConnectionError:
-        return None
-    except requests.exceptions.Timeout:
-        return None
-
-    return carousel_html
