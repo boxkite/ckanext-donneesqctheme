@@ -1,0 +1,15 @@
+[
+    {
+        "domain_content": true,
+        "domain_data": true,
+        "domain_software": false,
+        "family": "Creative Commons",
+        "id": "cc-by",
+        "is_okd_compliant": true,
+        "is_osi_compliant": true,
+        "maintainer": "Creative Commons",
+        "status": "active",
+        "title": "Creative Commons 4.0 avec attribution",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+]
