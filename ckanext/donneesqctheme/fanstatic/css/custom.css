@@ -276,6 +276,30 @@ a.tag:active {
   -moz-border-radius: 0px;
   border-radius: 0px;
 }
+.masthead .navigation .nav-pills ul {
+  display: none;
+  position: absolute;
+  margin-left: 0px;
+  list-style: none;
+  padding: 0px;
+  z-index: 1000;
+}
+.masthead .navigation .nav-pills ul li {
+  width: 160px;
+  font-size: 11px;
+  float: none;
+}
+.masthead .navigation .nav-pills ul a {
+  display: block;
+  padding: 7px 8px;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid #222;
+  background-color: #555;
+}
+.masthead .navigation .nav-pills ul li a:hover {
+  color: #069;
+}
 .masthead .site-search {
   position: absolute;
   right: 0px;

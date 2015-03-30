@@ -1,0 +1,25 @@
+{% ckan_extends %}
+
+
+      {% block header_site_navigation %}
+        <nav class="section navigation">
+          <ul class="nav nav-pills">
+            {% block header_site_navigation_tabs %}
+            <li><a href="#">{{ _('Datasets') }}</a>
+	  				<ul>
+	  					<li><a href="#">Toutes les données</a></li>
+	  					<li><a href="#">Par catégorie</a></li>
+	  					<li><a href="#">Par organisation</a></li>
+	  					<li><a href="#">Accès par l'API</a></li>
+	  					<li><a href="#">Suggérer un jeu de données</a></li>
+	  				</ul>                  
+             </li>
+              {{ h.build_nav_main(
+                ('organizations_index', _('Organizations')),
+                ('group_index', _('Groups')),
+                ('about', _('About'))
+              ) }}
+            {% endblock %}
+          </ul>
+        </nav>
+      {% endblock %}
