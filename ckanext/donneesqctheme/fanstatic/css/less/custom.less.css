@@ -301,6 +301,38 @@ a.tag:hover, a.tag:active {
           border-bottom: 4px solid #ccc;
           .no-radius;
         }
+
+        ul {
+          display: none;
+          position: absolute;
+          margin-left: 0px;
+          list-style: none;
+          padding: 0px;
+          z-index: 1000;
+        }
+
+        ul li {
+          width: 160px;
+          font-size: 11px;
+          float: none;
+        }
+
+        ul a {
+          display: block;
+          padding: 7px 8px;
+          color: #fff;
+          text-decoration: none;
+          border-bottom: 1px solid #222;
+          background-color: #555;
+        }
+
+        ul li a:hover {
+          color: #069;
+        }
+
+
+
+
       }
     }
     .site-search {
