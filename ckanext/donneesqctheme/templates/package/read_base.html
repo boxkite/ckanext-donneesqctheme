@@ -1,5 +1,10 @@
 {% ckan_extends %}
 
+{% block head_extras %}
+  {{ super() }}
+  <script type="text/javascript">var disqus_title =  'Données Québec - {{pkg['title']}} >> {{pkg['organization']['title']}}' ;</script>
+{% endblock %}
+
 {% block content_primary_nav %}
     {{ h.build_nav_icon('dataset_read', _('Dataset'), id=pkg.name) }}
 

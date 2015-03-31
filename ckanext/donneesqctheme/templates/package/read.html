@@ -1,6 +1,8 @@
 {% ckan_extends %}
 
 {% block package_description %}
+
+ 
     {% if pkg['groups'] %}
         <div class="pkg-categories" style="float:right">
         <h3>Catégories</h3>
@@ -12,6 +14,8 @@
         </div>
 
     {% endif %}
+    
+
     {{ super() }}
 {% endblock %}
 
