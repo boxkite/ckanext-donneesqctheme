@@ -5,7 +5,7 @@
         <nav class="section navigation">
           <ul class="nav nav-pills">
             {% block header_site_navigation_tabs %}
-            <li><a href="{{ h.url_for(controller='package', action='search') }}">{{ _('Datasets') }}</a>
+            <li><a href="#">{{ _('Datasets') }}</a>
 	  				<ul>
 	  					<li><a href="{{ h.url_for(controller='package', action='search') }}">Toutes les données</a></li>
 	  					<li><a href="{{ h.url_for(controller='group', action='index') }}">Par thématique</a></li>
@@ -13,24 +13,26 @@
 	  					<li><a href="{{ h.url_for(controller='ckanext.donneesqctheme.controller:SuggestController', action='suggest_form') }}">Suggérer un jeu de données</a></li>
 	  				</ul>                  
              </li>
-             <li><a href="{{ h.url_for(controller='related', action='dashboard') }}">{{ _('Apps & Dev') }}</a>             
+            <li><a href="{{ h.url_for(controller='organization', action='index') }}">{{ _('Publieurs') }}</a>             
+             </li>  
+            <li><a href="{{ h.url_for(controller='related', action='dashboard') }}">{{ _('Réutilisations') }}</a>             
+             </li>                 
+             <li><a href="#">{{ _('Utilisateurs') }}</a>             
 	  				<ul>
-	  					<li><a href="{{ h.url_for(controller='related', action='dashboard') }}">Applications et visualisation</a></li>
-	  					<li><a href="{{ h.url_for(controller='ckanext.donneesqctheme.controller:SuggestController', action='suggest_form') }}">Soumettez une utilisation</a></li>
-	  					<li><a href="/content/access-api/">Accès par l'API</a></li>
+	  					<li><a href="/content/api-catalogue/">API du catalogue</a></li>
+	  					<li><a href="/content/api-donnees/">API de données</a></li>	  					
+	  					<li><a href="{{ h.url_for(controller='ckanext.donneesqctheme.controller:SuggestController', action='suggest_form') }}">Soumettre une utilisation</a></li>
+
 	  				</ul>                  
              </li>  
-             <li><a href="{{ h.url_for(controller='related', action='dashboard') }}">{{ _('Interagir') }}</a>             
+             <li><a href="#">{{ _('Interagir') }}</a>             
 	  				<ul>
+	  					<li><a href="/content/a-propos/">À propos de Données Québec</a></li>
 	  					<li><a href="{{ h.url_for(controller='ckanext.donneesqctheme.controller:ContactController', action='contact_form') }}">Nous contacter</a></li>
 	  					<li><a href="/content/">Billets de blogue</a></li>
 	  					<li><a href="/content/a-propos/">À propos de Données Québec</a></li>
-	  					<li><a href="/content/statistiques/">Statistiques du site</a></li>
 	  				</ul>                  
-             </li>                          
-            <li><a href="{{ h.url_for(controller='organization', action='index') }}">{{ _('Publieurs') }}</a>             
-             </li>             
-
+             </li>                                   
             {% endblock %}
           </ul>
         </nav>

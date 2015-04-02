@@ -348,12 +348,12 @@ a.tag:hover, a.tag:active {
 
 //FOOTER COMMON
 
+
+
 .site-footer {
   background: #575757;
   font-size: 115%;
   color: #d7d7d7;
-  height: 200px;
-  font-family: Lato, Arial, sans-serif;
   font-weight: 400;
 
   a {
@@ -363,10 +363,15 @@ a.tag:hover, a.tag:active {
     text-decoration:none;
   }
 
-  .footer-col1 {
+  .footer-links {
     float: left;
     width: 300px;
-    height: 200px;
+
+  }
+
+  hr {
+    width: 50%;
+    margin: 10px 0 20px 20px;
   }
  
   .footer-logo {
@@ -381,10 +386,13 @@ a.tag:hover, a.tag:active {
     margin: 2px 8px 2px 8px;
   }
 
-  .footer-links, .attribution {
-    float: left;
-    margin-left: 20px;
-    width: 560px;
+  .attribution {
+    float:right;
+    width: 300px;
+  }
+
+  .license {
+    margin: 20px 0px 20px 0px;
   }
 
   .footer-links ul {
@@ -406,6 +414,12 @@ a.tag:hover, a.tag:active {
       font-size: 130%;
     }
   }  
+
+//Some debug stuff
+.container .container {
+  position: absolute;
+  top: -20px;
+}
 
 
 }

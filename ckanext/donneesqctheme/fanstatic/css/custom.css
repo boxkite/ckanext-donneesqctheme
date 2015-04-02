@@ -312,8 +312,6 @@ a.tag:active {
   background: #575757;
   font-size: 115%;
   color: #d7d7d7;
-  height: 200px;
-  font-family: Lato, Arial, sans-serif;
   font-weight: 400;
 }
 .site-footer a {
@@ -322,10 +320,13 @@ a.tag:active {
 .site-footer a:hover {
   text-decoration: none;
 }
-.site-footer .footer-col1 {
+.site-footer .footer-links {
   float: left;
   width: 300px;
-  height: 200px;
+}
+.site-footer hr {
+  width: 50%;
+  margin: 10px 0 20px 20px;
 }
 .site-footer .footer-logo {
   margin-bottom: 30px;
@@ -336,11 +337,12 @@ a.tag:active {
 .site-footer .site-search {
   margin: 2px 8px 2px 8px;
 }
-.site-footer .footer-links,
 .site-footer .attribution {
-  float: left;
-  margin-left: 20px;
-  width: 560px;
+  float: right;
+  width: 300px;
+}
+.site-footer .license {
+  margin: 20px 0px 20px 0px;
 }
 .site-footer .footer-links ul {
   width: 270px;
@@ -357,6 +359,10 @@ a.tag:active {
   content: "\f099";
   padding-right: 10px;
   font-size: 130%;
+}
+.site-footer .container .container {
+  position: absolute;
+  top: -20px;
 }
 .homepage [role=main] {
   padding: 0;
