@@ -1,14 +1,49 @@
 {% ckan_extends %}
 
-{% block package_description %}
+{% block primary %}
+<style>
+    .resource-view .pull-right {
+  display: none;
+}
 
+.resource-view {margin: 0px;}
+.resource-view .desc {display:none;}
+.m-top {margin: 0px;}
+.ckanext-datapreview {padding: 0px;}
+</style>
+{% if pkg['view'] %}
+  <div class="dqc-preview" style="width:100%; border-bottom: 1px solid #ccc; height: 250px; overflow: hidden; background-color: #fff;">
+
+        {% snippet 'package/snippets/resource_view.html',
+            resource_view = pkg['view'],
+            resource = pkg['view_res'],
+            package = pkg
+        %}
+
+        <!-- {{h.url_for(controller='package', action=url_action, id=pkg.name, resource_id=pkg['view_res'].id) }} -->
+    
+  </div>
+  {% endif %}
+  {{ super() }}
+{% endblock %}
+
+
+
+    {% block package_notes %}
+      {% if c.pkg_notes_formatted %}
+        <div class="notes embedded-content">
+          {{ c.pkg_notes_formatted }}
+        </div>
+      {% endif %}
+    {% endblock %}
+
+{% block package_description %}
  
     {% if pkg['groups'] %}
-        <div class="pkg-categories" style="float:right">
-        <h3>Catégories</h3>
-            <ul>
+        <div class="pkg-categories" style="text-transform: uppercase;">
+            <ul style="display: inline;">
             {% for group in pkg['groups'] %}
-                <li>{{group.display_name}}</li>
+                <li style="list-style-type: none;">{{group.display_name}}</li>
             {% endfor %}
             </ul>
         </div>
@@ -17,18 +52,9 @@
     
 
     {{ super() }}
-{% endblock %}
 
-{% block package_resources %}
 
-    {% if pkg['view'] %}
-        {% snippet 'package/snippets/resource_view.html',
-            resource_view = pkg['view'],
-            resource = pkg['view_res'],
-            package = pkg
-        %}
-    {% endif %}
-
-    {{ super() }}
-
+        <div class="notes embedded-content">
+          {{ c.pkg_notes_formatted }}
+        </div>
 {% endblock %}
