@@ -52,38 +52,46 @@
             "display_snippet": "link.html"
         },
         {
-            "field_name": "version",
-            "label": "Version",
-            "validators": "ignore_missing unicode package_version_validator",
-            "form_placeholder": "1.0"
+            "field_name": "update_frequency",
+            "label": "Frequence de mise a jour",
+            "form_snippet": "update_frequency_qc.html"
         },
         {
+            "field_name": "language",
+            "label": "Langue",
+            "form_snippet": "language_qc.html"
+        },        
+        {
+            "field_name": "time_coverage_start",
+            "label": "Debut de la periode couverte",
+            "form_placeholder": "AAAA-MM-JJ",
+            "display_snippet": "date.html"
+        }, 
+        {
+            "field_name": "time_coverage_end",
+            "label": "Fin de la periode couverte",
+            "form_placeholder": "AAAA-MM-JJ",
+            "display_snippet": "date.html"
+        },    
+        {
+            "field_name": "spatial",
+            "label": "Couverture geographique",
+            "form_snippet": "textarea.html",
+            "form_placeholder": "{\"type\":\"Polygon\",\"coordinates\": [[[-74.0161991426,40.701958285],[-74.0161991426,40.872723176],[-73.9177509299,40.872723176],[-73.9177509299,40.701958285],[-74.0161991426,40.701958285]]]}"
+        },                    
+        {
             "field_name": "author",
-            "label": "Author",
-            "form_placeholder": "Joe Bloggs",
+            "label": "Personne contact",
+            "form_placeholder": "Nom du contact",
             "display_property": "dc:creator"
         },
         {
             "field_name": "author_email",
-            "label": "Author Email",
-            "form_placeholder": "joe@example.com",
+            "label": "Courriel du contact",
+            "form_placeholder": "nom@example.com",
             "display_property": "dc:creator",
             "display_snippet": "email.html",
             "display_email_name_field": "author"
-        },
-        {
-            "field_name": "maintainer",
-            "label": "Maintainer",
-            "form_placeholder": "Joe Bloggs",
-            "display_property": "dc:contributor"
-        },
-        {
-            "field_name": "maintainer_email",
-            "label": "Maintainer Email",
-            "form_placeholder": "joe@example.com",
-            "display_property": "dc:contributor",
-            "display_snippet": "email.html",
-            "display_email_name_field": "maintainer"
         }
     ],
     "resource_fields": [

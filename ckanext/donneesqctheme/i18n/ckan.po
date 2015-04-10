@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: CKAN\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-01-26 11:55+0000\n"
-"PO-Revision-Date: 2015-03-30 15:55-0500\n"
+"PO-Revision-Date: 2015-04-10 10:24-0500\n"
 "Last-Translator: Yann-Aël <yannael@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/ckan/language/"
 "fr/)\n"
@@ -5100,6 +5100,14 @@ msgstr "Site web"
 #: ckanext/webpageview/theme/templates/webpage_form.html:3
 msgid "Web Page url"
 msgstr "URL de la page web"
+
+#: dynamic value
+msgid "daily"
+msgstr "Quotidien"
+
+#: dynamic value
+msgid "active"
+msgstr "Actif"
 
 #: ckanext/webpageview/theme/templates/webpage_form.html:3
 msgid "eg. http://example.com (if blank uses resource url)"

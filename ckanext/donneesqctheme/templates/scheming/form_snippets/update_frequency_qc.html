@@ -1,0 +1,28 @@
+<div class="control-group">
+  {% set error = errors[field.field_name] %}
+  {% set update_frequency = [
+      ('Ponctuel', 'irregular'), 
+      ('Temps réel', 'continuous'), 
+      ('Quotidien', 'daily'), 
+      ('Hebdomadaire', 'weekly'), 
+      ('Mensuel', 'monthly'),
+      ('Trimestriel', 'quarterly'), 
+      ('Semi-annuel', 'semiannual'), 
+      ('Annuel', 'annual'), 
+      ('Biennal', 'biennial'), 
+      ('Triennal', 'triennial'),       
+  ] %}
+  <label class="control-label" for="field-license">{{
+     h.scheming_language_text(field.label) }}</label>
+  <div class="controls">
+    <select id="field-{{ field.field_name }}" name="{{ field.field_name }}"
+      data-module="autocomplete">
+      {% for frequency_desc, frequency_id in update_frequency  %}
+        <option value="{{ frequency_id }}" {% if data.get(field.field_name,
+          'irregular') == frequency_id %}selected="selected"{%
+          endif %}>{{ frequency_desc }}</option>
+      {% endfor %}
+    </select>
+    {% if error %}<span class="error-block">{{ error }}</span>{% endif %}
+  </div>
+</div>
