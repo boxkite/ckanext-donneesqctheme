@@ -3,6 +3,11 @@
 {% block basic_fields %}
     {{ super() }}
 
-    {{ form.input('email', label=_('Email'), id='field-email', type='email', value=data.email, error=errors.email, classes=['control-medium'], is_required=true) }}
+    {{ form.input('email', label=_('Courriel'), id='field-email', type='email', value=data.email, error=errors.email, classes=['control-medium'], is_required=true) }}
+
+    {{ form.input('url', label=_('Adresse web de l\'organisation'), id='field-url', type='url', value=data.url, error=errors.url, classes=['control-medium']) }}
+
+    {{ form.textarea('bbox', label=_('Étendue géographique (au format geojson)'), id='field-bbox', value=data.bbox, error=errors.bbox, placeholder=_('[-73.55, -45.65, -73.75, 45.85]')) }}
+
 
 {% endblock %}

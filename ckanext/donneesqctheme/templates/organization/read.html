@@ -2,10 +2,14 @@
 
 {% block primary_content_inner %}
 
-    <h3>{{_('About')}}</h3>
+    <h3>{{ c.group_dict.display_name}}</h3>
     {% if c.group_dict.description %}
+      <div class="org-desc">
       {{ h.render_markdown(c.group_dict.description) }}
+      </div>
     {% endif %}
+
+    <div class="org-url">Adresse web de l'organisation : <a href="{{c.group_dict.url}}">{{c.group_dict.url}}</a></div>
 
     <hr/>
 

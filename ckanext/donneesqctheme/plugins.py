@@ -133,6 +133,14 @@ class OrgPlugin(HierarchyForm):
             'email': [ignore_missing, convert_to_extras]
         })
 
+        schema.update({
+            'url': [ignore_missing, convert_to_extras]
+        })
+
+        schema.update({
+            'bbox': [ignore_missing, convert_to_extras]
+        })
+
         return schema
 
     def db_to_form_schema(self):
@@ -140,6 +148,14 @@ class OrgPlugin(HierarchyForm):
 
         schema.update({
             'email': [convert_from_extras, ignore_missing]
+        })
+
+        schema.update({
+            'url': [convert_from_extras, ignore_missing]
+        })
+
+        schema.update({
+            'bbox': [convert_from_extras, ignore_missing]
         })
 
         return schema
