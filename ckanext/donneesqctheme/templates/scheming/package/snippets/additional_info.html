@@ -8,6 +8,8 @@
     'tag_string',
     'license_id',
     'owner_org',
+    'time_coverage_start',
+    'time_coverage_end'
     ] -%}
 
 {% block package_additional_info %}
@@ -25,19 +27,26 @@
       </tr>
     {%- endif -%}
   {%- endfor -%}
-  {% if h.check_access('package_update',{'id':pkg_dict.id}) %}
+  {%- if pkg_dict["time_coverage_start"] or pkg_dict["time_coverage_end"] -%}
+    <tr>
+      <th scope="row" class="dataset-label">{{ _("Couverture temporelle") }}</th>
+      {%- if pkg_dict["time_coverage_start"] or pkg_dict["time_coverage_end"] -%}
+        <td class="dataset-details">du {{ h.render_datetime(pkg_dict.time_coverage_start) }} au {{ h.render_datetime(pkg_dict.time_coverage_end) }}</td>
+      {%- elif pkg_dict["time_coverage_start"] -%}
+        <td class="dataset-details">À partir du {{ h.render_datetime(pkg_dict.time_coverage_start) }}</td>
+      {%- elif pkg_dict["time_coverage_end"] -%}
+        <td class="dataset-details">Avant le {{ h.render_datetime(pkg_dict.time_coverage_end) }}</td>
+      {%- endif -%}    
+    </tr> 
+  {%- endif -%}  
     <tr>
       <th scope="row" class="dataset-label">{{ _("Date de création") }}</th>
       <td class="dataset-details">{{ h.render_datetime(pkg_dict.metadata_created) }}</td>
     </tr>
-  {% endif %}
-  {% if h.check_access('package_update',{'id':pkg_dict.id}) %}
     <tr>
       <th scope="row" class="dataset-label">{{ _("Dernière mise à jour") }}</th>
-      <td class="dataset-details">{{ h.render_datetime(pkg_dict.metadata_modified) }}
-</td>
-    </tr>
-  {% endif %}  
+      <td class="dataset-details">{{ h.render_datetime(pkg_dict.metadata_modified) }}</td>
+    </tr>  
   {% if h.check_access('package_update',{'id':pkg_dict.id}) %}
     <tr>
       <th scope="row" class="dataset-label">{{ _("State") }}</th>
