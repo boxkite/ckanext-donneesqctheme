@@ -56,8 +56,12 @@ class ContactPagesPlugin(SingletonPlugin):
             self.delay = None
 
     def before_map(self, m):
-        m.connect('suggest' ,'/suggest',
+        m.connect('suggest' ,'/suggerer-donnees',
                     controller='ckanext.donneesqctheme.controller:SuggestController',
+                    action='suggest_form')
+
+        m.connect('suggest' ,'/suggerer-utilisation',
+                    controller='ckanext.donneesqctheme.controller:SuggestAppController',
                     action='suggest_form')
 
         m.connect('contact', '/contact',
@@ -176,7 +180,7 @@ class PackagePlugin(SingletonPlugin):
 
 def _get_organizations():
     orgs = [
-        {'text': 'All Organizations', 'value': 'all'}
+        {'text': 'Tous les publieurs', 'value': 'all'}
     ]
     org_list = logic.get_action('organization_list')({}, {})
     for o in org_list:

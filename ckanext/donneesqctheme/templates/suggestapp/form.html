@@ -1,0 +1,29 @@
+{% extends "page.html" %}
+
+
+{% block primary_content %}
+  <article class="module">
+    <div class="module-content">
+      <h1 class="page-heading">Suggérez-nous une utilisation de données</h1>
+      <p>Dans la mesure du possible, nous publierons les suggestions d'utilisation de données dans la section consacrée à cet effet. Les soumissions seront toutefois validées avant d'être publiées.</p>
+      <br/>
+
+      {{ c.form | safe }}
+
+    </div>
+  </article>
+{% endblock %}
+
+{% block secondary_content %}
+<div class="module module-narrow module-shallow">
+  <h2 class="module-heading">
+    <i class="icon-info-sign"></i>
+    {{ _('Suggestion') }}
+  </h2>
+  <div class="module-content">
+    <p>
+      Vous avez utilisé les données ouvertes de Données Québec pour faire une application, une visualisation ou autre chose? Faites-le nous savoir, ça nous intéresse!
+    </p>
+  </div>
+</div>
+{% endblock %}

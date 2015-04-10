@@ -9,13 +9,13 @@
 
     {{ form.input('email', label=_('Courriel'), id='field-email', type='email', value=data.email, error=errors.email, classes=['control-medium'], is_required=true) }}
 
-    {{ form.input('category', label=_('Thématique'), id='field-category', value=data.category, error=errors.category, placeholder=_('p. ex. Environnement, Finances, etc.'), classes=['control-medium']) }}
 
     {{ form.select('organization', label=_('Organisation visée'), id='field-organization', options=h.get_organizations() , error=errors.organization, classes=['control-medium']) }}
 
-    {{ form.markdown('suggestion', label=_('Jeu de données suggéré'), id='field-suggestion', value=data.suggestion, error=errors.suggestion, placeholder=_('Quel type de données cherchez-vous'), is_required=true) }}
+    {{ form.input('url', label=_('URL'), id='field-url', type='url', value=data.url, error=errors.url, classes=['control-medium'], placeholder=_('http://url.de.mon.application.net/'), is_required=true) }}
 
-    {{ form.markdown('usage', label=_('Utilisation visée'), id='field-usage', value=data.usage, error=errors.usage, placeholder=_('Comment entendez-vous utiliser cette données?')) }}
+
+    {{ form.markdown('suggestion', label=_('Description de votre utilisation'), id='field-suggestion', value=data.suggestion, error=errors.suggestion, placeholder=_('De quel type d\'utilisation s\'agit-il (application, visualisation, etc.)? Quel est l\'intérêt de votre réalisation?'), is_required=true) }}
 
 
   {% if g.recaptcha_publickey %}
