@@ -5,31 +5,27 @@
           <ul class="unstyled">
               <li>Les données
               		<ul  class="sub-nav">
-              			<li>Liste complète</li>
-              			<li>Par organisation</li>
-              			<li>Par thématique</li>
-              			<li>Par mot-clé</li>
+              			<li><a href="{{ h.url_for(controller='package', action='search') }}">Liste complète</a></li>
+              			<li><a href="{{ h.url_for(controller='organization', action='index') }}">Par organisation</a></li>
+              			<li><a href="{{ h.url_for(controller='group', action='index') }}">Par thématique</a></li>
+              			<li><a href="{{ h.url_for(controller='tag', action='index') }}">Par mot-clé</a></li>
               		</ul>
 
               </li>
-              <li>Les utilisations</li>
-              <li>Accès à l'API
-              		<ul class="sub-nav">
-              			<li>Catalogue de données</li>
-              			<li>Données</li>              			
-              		</ul>
-              </li>Articles et billets de blogue</li>
+              <li><a href="{{ h.url_for(controller='related', action='dashboard') }}">Les réutilisations de données</a></li>
+              <li><a href="/content/acces-api">Accès aux interfaces programmables (API)</a></li>
+              <li><a href="/content/">Articles et billets de blogue</a></li>
           </ul>
       </nav>
       <nav class="footer-links">
           <ul class="unstyled">
-              <li><a href="{{ h.url_for(controller='home', action='about') }}">[Mailbox] Contactez-nous</a></li>
-              <li><a href="/pages/faq">[Twitter] Suivez-nous</a></li>
-              <li><a href="/pages/faq">[Github] Notre code</a></li>
-              <li>Suggérez-nous
+              <li><a href="{{ h.url_for(controller='ckanext.donneesqctheme.controller:ContactController', action='contact_form') }}">[Mailbox] Contactez-nous</a></li>
+              <li><a href="http://twitter.com">[Twitter] Suivez-nous</a></li>
+              <li><a href="http://github.com">[Github] Notre code</a></li>
+              <li>Suggérez
               		<ul class="sub-nav">
-              			<li>Un jeu de données</li>
-              			<li>Une utilisation de données</li>
+              			<li><a href="{{ h.url_for(controller='ckanext.donneesqctheme.controller:SuggestController', action='suggest_form') }}">Un jeu de données à publier</a></li>
+              			<li><a href="{{ h.url_for(controller='ckanext.donneesqctheme.controller:SuggestController', action='suggest_form') }}">Une réutilisation de données</a></li>
               		</ul>
               </li>
         </ul>
@@ -38,16 +34,16 @@
           <hr/>
           <ul class="unstyled">
               <li><a href="{{ h.url_for(controller='home', action='about') }}">À propos de Données Québec</a></li>
-              <li><a href="/pages/faq">Questions fréquentes</a></li>
-              <li><a href="/api/3">Vocabulaire</a></li>
+              <li><a href="/content/a-propos">Questions fréquentes</a></li>
+              <li><a href="/content/lexique-et-acronymes">Vocabulaire</a></li>
           </ul>
        
       </nav>
       <div class="attribution">
            <ul class="unstyled">
-              <li><a href="{{ h.url_for(controller='home', action='about') }}">Conditions d'utilisation</a></li>
-              <li><a href="/pages/faq">Respect de la vie privée</a></li>
-              <li><a href="/api/3">Accesibilité web</a></li>
+              <li><a href="/content/conditions-dutilisation">Conditions d'utilisation</a></li>
+              <li><a href="/content/confidentialite-et-donnees-personnelles">Respect de la vie privée</a></li>
+              <li><a href="/content/accessibilite-et-normes-web">Accesibilité web</a></li>
           </ul>  
       	<div class="license">
 		  <img class="cc-logo" src="http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png" width="100" />
@@ -61,7 +57,8 @@
 		    .ckan-footer-logo {margin: 2px 0 0 120px}
 		    .datacats-footer-logo {margin: -43px 0 0 0}
 		  </style>
-		  <p>{% trans %}<strong>Powered by</strong> <a class="hide-text ckan-footer-logo" href="http://ckan.org">CKAN</a>{% endtrans %}
+		  <p>{% trans %}<strong>Powered by</strong> 
+      <a class="hide-text ckan-footer-logo" href="http://ckan.org">CKAN</a>{% endtrans %}
 		  <img class="datacats-footer-logo" src="{{ h.url_for_static('/datacats/datacats-footer.png') }}"/></p>
       </div>
     {% endblock %}

@@ -48,56 +48,93 @@
             "required": true,
             "form_snippet": "organization_qc.html"
         },
-
         {
             "field_name": "update_frequency",
             "label": "Fréquence de mise à jour",
             "required": true,
             "preset": "select",
             "choices": [
-              {"label": "Ponctuel",  "value": "irregular"}, 
-              {"label": "Temps réel",  "value": "continuous"}, 
-              {"label": "Quotidien", "value": "daily"}, 
-              {"label": "Hebdomadaire", "value": "weekly"}, 
-              {"label": "Mensuel", "value": "monthly"},
-              {"label": "Trimestriel", "value": "quarterly"}, 
-              {"label": "Semi-annuel", "value": "semiannual"}, 
-              {"label": "Annuel", "value": "annual"}, 
-              {"label": "Biennal", "value": "biennial"}, 
-              {"label": "Triennal", "value": "triennial"}
-            ]            
+                {
+                    "label": "Ponctuel",
+                    "value": "irregular"
+                },
+                {
+                    "label": "Temps réel",
+                    "value": "continuous"
+                },
+                {
+                    "label": "Quotidien",
+                    "value": "daily"
+                },
+                {
+                    "label": "Hebdomadaire",
+                    "value": "weekly"
+                },
+                {
+                    "label": "Mensuel",
+                    "value": "monthly"
+                },
+                {
+                    "label": "Trimestriel",
+                    "value": "quarterly"
+                },
+                {
+                    "label": "Semi-annuel",
+                    "value": "semiannual"
+                },
+                {
+                    "label": "Annuel",
+                    "value": "annual"
+                },
+                {
+                    "label": "Biennal",
+                    "value": "biennial"
+                },
+                {
+                    "label": "Triennal",
+                    "value": "triennial"
+                }
+            ]
         },
-
         {
             "field_name": "language",
             "required": true,
             "label": "Langue",
             "preset": "select",
             "choices": [
-              {"label": "Français",  "value": "FR"}, 
-              {"label": "Français et anglais",  "value": "FR,EN"}, 
-              {"label": "Anglais", "value": "EN"}
-            ]   
-        },        
+                {
+                    "label": "Français",
+                    "value": "FR"
+                },
+                {
+                    "label": "Français et anglais",
+                    "value": "FR,EN"
+                },
+                {
+                    "label": "Anglais",
+                    "value": "EN"
+                }
+            ]
+        },
         {
             "field_name": "time_coverage_start",
             "label": "Début de la periode couverte",
             "form_placeholder": "AAAA-MM-JJ",
             "display_snippet": "date.html"
-        }, 
+        },
         {
             "field_name": "time_coverage_end",
             "label": "Fin de la periode couverte",
             "form_placeholder": "AAAA-MM-JJ",
             "display_snippet": "date.html"
-        },    
+        },
         {
             "field_name": "spatial",
             "label": "Couverture géographique",
-            "help_text" : "Au format GeoJSON",
+            "help_text": "Au format GeoJSON",
             "form_snippet": "textarea.html",
             "form_placeholder": "{\"type\":\"Polygon\",\"coordinates\": [[[-74.0161991426,40.701958285],[-74.0161991426,40.872723176],[-73.9177509299,40.872723176],[-73.9177509299,40.701958285],[-74.0161991426,40.701958285]]]}"
-        },                    
+        },
         {
             "field_name": "author",
             "required": true,
@@ -119,7 +156,19 @@
             "form_placeholder": "http://example.com/dataset.json",
             "display_property": "foaf:homepage",
             "display_snippet": "link.html"
-        }     
+        },
+        {
+            "field_name": "featured_dataset",
+            "label": "Jeu de données vedette",
+            "preset": "multiple_checkbox",
+            "choices": [
+                {
+                    "label": "Oui",
+                    "value": "is_featured"
+                }
+            ],
+            "help_text": "Affiche le jeu de données sur la page d'accueil"
+        }
     ],
     "resource_fields": [
         {

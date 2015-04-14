@@ -14,23 +14,19 @@
 	  				</ul>                  
              </li>
             <li><a href="{{ h.url_for(controller='organization', action='index') }}">{{ _('Publieurs') }}</a>             
-             </li>  
-            <li><a href="{{ h.url_for(controller='related', action='dashboard') }}">{{ _('Réutilisations') }}</a>             
-             </li>                 
-             <li><a href="#">{{ _('Utilisateurs') }}</a>             
+             </li>                  
+             <li><a href="#">{{ _('Applications') }}</a>             
 	  				<ul>
-	  					<li><a href="/content/api-catalogue/">API du catalogue</a></li>
-	  					<li><a href="/content/api-donnees/">API de données</a></li>	  					
-	  					<li><a href="{{ h.url_for(controller='ckanext.donneesqctheme.controller:SuggestController', action='suggest_form') }}">Soumettre une utilisation</a></li>
-
+	  					<li><a href="{{ h.url_for(controller='related', action='dashboard') }}">Galerie de réutilisations de données</a></li>
+              <li><a href="{{ h.url_for(controller='ckanext.donneesqctheme.controller:SuggestController', action='suggest_form') }}">Soumettre une réutilisation</a></li>
+	  					<li><a href="/content/acces-api">Les APIs de Données Québec</a></li>	  					
 	  				</ul>                  
              </li>  
              <li><a href="#">{{ _('Interagir') }}</a>             
 	  				<ul>
 	  					<li><a href="/content/a-propos/">À propos de Données Québec</a></li>
 	  					<li><a href="{{ h.url_for(controller='ckanext.donneesqctheme.controller:ContactController', action='contact_form') }}">Nous contacter</a></li>
-	  					<li><a href="/content/">Billets de blogue</a></li>
-	  					<li><a href="/content/a-propos/">À propos de Données Québec</a></li>
+	  					<li><a href="/content/">Blogue</a></li>
 	  				</ul>                  
              </li>                                   
             {% endblock %}
