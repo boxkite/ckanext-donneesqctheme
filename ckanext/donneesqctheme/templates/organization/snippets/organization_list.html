@@ -1,0 +1,34 @@
+
+
+<br/>
+<h1>Municipalités</h1>
+<ul class="media-grid" data-module="media-grid">
+  {% for organization in organizations %}
+  	{% set org = h.get_action("organization_show", {'id' : organization.id}) %}
+    {% if org.org_type == "Municipalité" %}
+    	{% snippet "organization/snippets/organization_item.html", organization=organization, position=loop.index %}
+    {% endif %}
+  {% endfor %}
+</ul>
+
+<br/>
+<h1>Gouvernement provincial</h1>
+<ul class="media-grid" data-module="media-grid">
+  {% for organization in organizations %}
+  	{% set org = h.get_action("organization_show", {'id' : organization.id}) %}
+    {% if org.org_type == "Gouv. provincial" %}
+    	{% snippet "organization/snippets/organization_item.html", organization=organization, position=loop.index %}
+    {% endif %}
+  {% endfor %}
+</ul>
+
+<br/>
+<h1>Autres publieurs</h1>
+<ul class="media-grid" data-module="media-grid">
+  {% for organization in organizations %}
+  	{% set org = h.get_action("organization_show", {'id' : organization.id}) %}
+    {% if org.org_type == "Autre" %}
+    	{% snippet "organization/snippets/organization_item.html", organization=organization, position=loop.index %}
+    {% endif %}
+  {% endfor %}
+</ul>

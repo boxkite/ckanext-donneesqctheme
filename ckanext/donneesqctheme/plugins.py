@@ -135,11 +135,21 @@ class OrgPlugin(HierarchyForm):
 
         schema.update({
             'url': [ignore_missing, convert_to_extras]
-        })
+        }
+        )
 
         schema.update({
             'bbox': [ignore_missing, convert_to_extras]
         })
+
+        schema.update({
+            'policy_url': [ignore_missing, convert_to_extras]
+        })
+
+        schema.update({
+            'org_type': [ignore_missing, convert_to_extras]
+        })
+
 
         return schema
 
@@ -158,6 +168,16 @@ class OrgPlugin(HierarchyForm):
             'bbox': [convert_from_extras, ignore_missing]
         })
 
+        schema.update({
+            'policy_url': [convert_from_extras, ignore_missing]
+        })
+
+
+        schema.update({
+            'org_type': [convert_from_extras, ignore_missing]
+        })
+
+
         return schema
 
     def before_view(self, org_dict):
@@ -171,6 +191,8 @@ class OrgPlugin(HierarchyForm):
 class PackagePlugin(SingletonPlugin):
     implements(IPackageController, inherit=True)
     implements(IConfigurer)
+
+
 
     def update_config(self, config):
         toolkit.add_resource('fanstatic', 'donneesqc')
@@ -191,6 +213,8 @@ class PackagePlugin(SingletonPlugin):
             pkg_dict['view'] = md.resource_view_dictize(view, context)
             pkg_dict['view_res'] = [res for res in pkg_dict['resources']
                     if res['id'] == pkg_dict['view']['resource_id']][0]
+
+
         return pkg_dict
 
 

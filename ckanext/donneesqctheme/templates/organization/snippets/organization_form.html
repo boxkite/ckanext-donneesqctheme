@@ -7,6 +7,11 @@
 
     {{ form.input('url', label=_('Adresse web de l\'organisation'), id='field-url', type='url', value=data.url, error=errors.url, classes=['control-medium']) }}
 
+    {{ form.input('policy_url', label=_('Adresse de la politique de données ouvertes'), id='field-policy_url', type='url', value=data.policy_url, error=errors.policy_url, classes=['control-medium']) }}
+
+    {{ form.select('org_type', label=_('Type d\'organisation'), options=[{'name':'mun', 'value': 'Municipalité'},{'name': 'prov', 'value': 'Gouv. provincial'},{'name': 'other', 'value': 'Autre'}], selected=data.org_type , error=errors.org_type) }}
+
+
     {{ form.textarea('bbox', label=_('Étendue géographique (au format geojson)'), id='field-bbox', value=data.bbox, error=errors.bbox, placeholder=_('[-73.55, -45.65, -73.75, 45.85]')) }}
 
 
