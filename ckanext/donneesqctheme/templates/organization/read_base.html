@@ -4,3 +4,20 @@
     {% snippet 'snippets/organization.html', organization=c.group_dict, show_nums=false %}
     {% block organization_facets %}{% endblock %}
 {% endblock %}
+
+
+{% block page_header %}
+{% if h.check_access('organization_update', {'id': c.group_dict.id}) %}
+  <header class="module-content page-header">
+
+      <div class="content_action">
+      {% link_for _('Manage'), controller='organization', action='edit', id=c.group_dict.name, class_='btn', icon='wrench' %}
+      </div>
+    <ul class="nav nav-tabs">
+	  {{ h.build_nav_icon('organization_read', _('Datasets'), id=c.group_dict.name) }}
+	  {{ h.build_nav_icon('organization_activity', _('Activity Stream'), id=c.group_dict.name) }}
+	  {{ h.build_nav_icon('organization_about', _('About'), id=c.group_dict.name) }}
+    </ul>
+  </header>
+{% endif %}
+{% endblock %}

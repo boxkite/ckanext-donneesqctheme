@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: CKAN\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-01-26 11:55+0000\n"
-"PO-Revision-Date: 2015-04-13 14:15-0500\n"
+"PO-Revision-Date: 2015-04-17 16:04-0500\n"
 "Last-Translator: \n"
 "Language-Team: French (http://www.transifex.com/projects/p/ckan/language/"
 "fr/)\n"
@@ -2769,7 +2769,7 @@ msgstr "Modifier le membre"
 #: ckan/templates/organization/member_new.html:66
 #: ckan/templates/organization/members.html:6
 msgid "Add Member"
-msgstr "Ajouter le membre"
+msgstr "Ajouter un membre"
 
 #: ckan/templates/group/member_new.html:18
 #: ckan/templates/organization/member_new.html:20
@@ -2974,11 +2974,9 @@ msgid ""
 "particular theme, or as a very simple way to help people find and search "
 "your own published datasets. "
 msgstr ""
-"Vous pouvez utiliser les thématiques dans CKAN pour créer et gérer des "
-"collections de jeux de données. Cela peut être pour cataloguer des jeux de "
-"données pour un projet ou une équipe en particulier, ou autour d'un thème "
-"spécifique, ou comme moyen très simple d'aider à parcourir et découvrir vos "
-"jeux de données publiés."
+"Les thématiques permettent de classer les jeux de données selon des "
+"catégories intuitives et faciles d'accès, peu importe l'organisation "
+"publiant les données."
 
 #: ckan/templates/group/snippets/history_revisions.html:10
 #: ckan/templates/package/snippets/history_revisions.html:10
@@ -3325,10 +3323,9 @@ msgid ""
 "datasets. Users can have different roles within an Organization, depending "
 "on their level of authorisation to create, edit and publish. "
 msgstr ""
-"Les Organisations CKAN sont utilisées pour créer, gérer et publier des "
-"collections de jeux de données. Les utilisateurs peuvent avoir différents "
-"rôles au sein d'une Organisation, en fonction de leur niveau d'autorisation "
-"pour créer, éditer et publier."
+"Les organisations représentent les différents publieurs de données sur la "
+"plateforme. Chaque publieur est autonome et contrôle les données qu'il rend "
+"disponible."
 
 #: ckan/templates/organization/snippets/organization_form.html:10
 msgid "My Organization"
@@ -3561,7 +3558,7 @@ msgstr "Point d'accès API"
 #: ckan/templates/package/resource_read.html:41
 #: ckan/templates/package/snippets/resource_item.html:48
 msgid "Go to resource"
-msgstr "Aller à la ressource"
+msgstr "Télécharger"
 
 #: ckan/templates/package/resource_read.html:43
 #: ckan/templates/package/snippets/resource_item.html:45
@@ -3616,7 +3613,7 @@ msgstr ""
 
 #: ckan/templates/package/resource_read.html:147
 msgid "Additional Information"
-msgstr "Informations additionnelles"
+msgstr "Métadonnées"
 
 #: ckan/templates/package/resource_read.html:151
 #: ckan/templates/package/snippets/additional_info.html:6
@@ -3690,8 +3687,8 @@ msgid ""
 " You can also access this registry using the %(api_link)s (see "
 "%(api_doc_link)s) or download a %(dump_link)s. "
 msgstr ""
-" Vous pouvez aussi accéder à ce catalogue en utilisant %(api_link)s (cf "
-"%(api_doc_link)s) ou télécharger %(dump_link)s. "
+"Vous pouvez aussi accéder à ce catalogue en utilisant l'<a href=\"/content/"
+"acces-api\">API</a>. <!-- %(api_link)s  %(dump_link)s  %(api_doc_link)s -->"
 
 #: ckan/templates/package/search.html:60
 #, python-format
@@ -3699,8 +3696,8 @@ msgid ""
 " You can also access this registry using the %(api_link)s (see "
 "%(api_doc_link)s). "
 msgstr ""
-"Vous pouvez également accéder à ce catalogue en utilisant %(api_link)s (cf "
-"%(api_doc_link)s). "
+"Vous pouvez aussi accéder à ce catalogue en utilisant l'<a href=\"/content/"
+"acces-api\">API</a>. <!-- %(api_link)s (see %(api_doc_link)s). -->"
 
 #: ckan/templates/package/view_edit_base.html:9
 msgid "All views"
@@ -3717,7 +3714,7 @@ msgstr "Prévisualiser la vue"
 #: ckan/templates/package/snippets/additional_info.html:2
 #: ckan/templates/snippets/additional_info.html:7
 msgid "Additional Info"
-msgstr "Info additionnelle"
+msgstr "Métadonnées"
 
 #: ckan/templates/package/snippets/additional_info.html:14
 #: ckan/templates/package/snippets/package_metadata_fields.html:6
@@ -3971,7 +3968,7 @@ msgstr "Prévisualiser"
 
 #: ckan/templates/package/snippets/resources_list.html:13
 msgid "Data and Resources"
-msgstr "Données et ressources"
+msgstr "Accès aux données"
 
 #: ckan/templates/package/snippets/resources_list.html:29
 msgid "This dataset has no data"
@@ -4050,7 +4047,7 @@ msgstr "Êtes-vous sûr de vouloir supprimer l'élément lié - {name} ?"
 #: ckan/templates/related/dashboard.html:9
 #: ckan/templates/related/dashboard.html:16
 msgid "Apps & Ideas"
-msgstr "Applications & Idées"
+msgstr "Réutilisations de données"
 
 #: ckan/templates/related/dashboard.html:21
 #, python-format

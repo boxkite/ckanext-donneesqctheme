@@ -12,7 +12,8 @@
 .ckanext-datapreview {padding: 0px;}
 </style>
 {% if pkg['view'] %}
-  <div class="dqc-preview" style="width:100%; border-bottom: 1px solid #ccc; height: 250px; overflow: hidden; background-color: #fff;">
+<div class="dqc-front"></div>
+  <div class="dqc-preview">
 
         {% snippet 'package/snippets/resource_view.html',
             resource_view = pkg['view'],
@@ -21,7 +22,7 @@
         %}
 
         <!-- {{h.url_for(controller='package', action=url_action, id=pkg.name, resource_id=pkg['view_res'].id) }} -->
-    
+    <div class="dqc-contract">Réduire la prévisualisation</div>
   </div>
   {% endif %}
   {{ super() }}

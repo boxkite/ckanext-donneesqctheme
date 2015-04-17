@@ -20,6 +20,7 @@ import os
 import calendar
 import codecs
 
+
 log = logging.getLogger('ckanext.donneesqctheme')
 
 class CustomTheme(SingletonPlugin):
@@ -71,20 +72,26 @@ class ContactPagesPlugin(SingletonPlugin):
         return m
 
     def _get_content(self,  url, name):
+
         path = self.tmp + name
         cache_delay = self.delay
 
         now = calendar.timegm(time.gmtime())
+        html = ''
         try:
-            html = ''
-            if os.path.isfile(path) == False or (now - os.path.getmtime(path)) > cache_delay:
-                r = requests.get(url, timeout=1)
-                f = codecs.open(path ,'w', encoding='utf8')
-                f.write(r.text)
-                html += r.text
-            else:
+ 
+            if os.path.isfile(path) and (now - os.path.getmtime(path)) < int(cache_delay):
                 f = codecs.open(path ,'r', encoding='utf8')
                 html += f.read()
+            else:
+                r = requests.get(url, timeout=1)
+                if r and r.status_code == 200:
+                    f = codecs.open(path ,'w', encoding='utf8')
+                    f.write(r.text)
+                    html += r.text
+                else:
+                    return None
+
         except requests.exceptions.ConnectionError:
             return None
         except requests.exceptions.Timeout:
@@ -196,6 +203,7 @@ class PackagePlugin(SingletonPlugin):
 
     def update_config(self, config):
         toolkit.add_resource('fanstatic', 'donneesqc')
+        toolkit.add_resource('fanstatic/js', 'js')
 
     def before_view(self, pkg_dict):
         #fetch related items

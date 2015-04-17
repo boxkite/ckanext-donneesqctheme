@@ -35,10 +35,11 @@
             "form_placeholder": "eg. economy, mental health, government"
         },
         {
-            "field_name": "license_id",
-            "label": "License",
-            "required": true,
-            "form_snippet": "license.html"
+          "field_name": "license_id",
+          "label": "License",
+          "required": true,
+          "validators": "not_empty",
+          "form_snippet": "license.html"
         },
         {
             "field_name": "owner_org",
@@ -138,8 +139,8 @@
         {
             "field_name": "author",
             "required": true,
-            "label": "Personne contact",
-            "form_placeholder": "Nom du contact",
+            "label": "Contact",
+            "form_placeholder": "Personne, département, service, etc.",
             "display_property": "dc:creator"
         },
         {

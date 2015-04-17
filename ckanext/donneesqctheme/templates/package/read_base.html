@@ -7,14 +7,12 @@
 
 
 {% block page_header %}
-{% if c.userobj %}
+{% if h.check_access('package_update', {'id':pkg.id }) %}
   <header class="module-content page-header">
 
     {% if self.content_action() | trim %}
       <div class="content_action">
-          {% if h.check_access('package_update', {'id':pkg.id }) %}
-    {% link_for _('Manage'), controller='package', action='edit', id=pkg.name, class_='btn', icon='wrench' %}
-  {% endif %}
+      {% link_for _('Manage'), controller='package', action='edit', id=pkg.name, class_='btn', icon='wrench' %}
       </div>
     {% endif %}
     <ul class="nav nav-tabs">

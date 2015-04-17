@@ -9,7 +9,14 @@
       </div>
     {% endif %}
 
+    {%  if c.group_dict.url %}
     <div class="org-url">Adresse web de l'organisation : <a href="{{c.group_dict.url}}">{{c.group_dict.url}}</a></div>
+    {% endif %}
+
+
+    {%  if c.group_dict.policy_url %}
+    <div class="org-policy">Politique de données ouvertes de l'organisation : <a href="{{c.group_dict.url}}">{{c.group_dict.policy_url}}</a></div>
+    {% endif %}
 
     <hr/>
 
