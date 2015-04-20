@@ -38,6 +38,7 @@
       {% snippet 'snippets/search_form.html', type='dataset', query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, placeholder=_('Search datasets...'), show_empty=request.params, fields=c.fields %}
     {% endblock %}
 
+  <a id="data-section"></a>
   {% block packages_list %}
     {% if c.page.items %}
       {{ h.snippet('snippets/package_list.html', packages=c.page.items) }}

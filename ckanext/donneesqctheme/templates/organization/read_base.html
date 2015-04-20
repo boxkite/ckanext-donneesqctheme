@@ -1,5 +1,14 @@
 {% ckan_extends %}
 
+
+{% block styles %}
+  {{ super() }}
+  
+  {% resource 'js/dqcorg.js' %}  
+
+{% endblock %}
+
+
 {% block secondary_content %}
     {% snippet 'snippets/organization.html', organization=c.group_dict, show_nums=false %}
     {% block organization_facets %}{% endblock %}

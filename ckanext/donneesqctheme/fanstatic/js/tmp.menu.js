@@ -1,7 +1,7 @@
-function setClickableTooltip(target, content){
+function setClickableTooltip(target, content, position, indelay){
       target.tooltip({
-        show: {delay: 500, duration:400 } ,
-        position: { my: "left-40 center", at: "right top+50", collision: "none" },
+        show: {delay: indelay, duration:400 } ,
+        position: position,
         content: content, //from params
         hide: { effect: "" }, //fadeOut
         close: function(event, ui){
@@ -20,8 +20,10 @@ function setClickableTooltip(target, content){
 }
 
 
+
 function expandPreview (){
-    $('.dqc-preview').animate({height:'460px'}, 500);
+    newHeight = $('.resource-view').outerHeight() + 30;
+    $('.dqc-preview').animate({height:newHeight}, 500);
     $('.resource-view').animate({'margin-top':'0px'}, 500);
     $('.dqc-front').css('z-index', -1000);
 
@@ -35,9 +37,11 @@ function contractPreview (){
 }
 
 
+
+
 $(document).ready(function(){
     $('.media-item').each( function(index){
-      setClickableTooltip($(this), $(this).find("p").html());
+      setClickableTooltip($(this), $(this).find("p").html(), { my: "left-40 center", at: "right top+50", collision: "none" }, 500);
       })
 
     $('.dqc-front').click(expandPreview);
@@ -46,14 +50,28 @@ $(document).ready(function(){
 
 });
 
+/*
 
+var formatMapper = {
+  "CSV": "CSV: Données tabulaire pouvant être importées dans MS Excel et autres. <a href='/content/format#csv'>En savoir plus</a>", 
+  "JSON": "JSON: Format structuré principalement pour être consommé par des applications. <a href='/content/format#json'>En savoir plus</a>"
+  };
+
+
+$(document).ready(function(){
+    $('.resource-list span.format-label').each( function(index){
+
+      setClickableTooltip($(this), formatMapper[$(this).html()], { my: "left center", at: "right top", collision: "none" }, 100);
+      })
+});
+*/
 
 
 
 $(document).ready(
   /* This is the function that will get executed after the DOM is fully loaded */
+
   function () {
-    /* Next part of code handles hovering effect and submenu appearing */
     $('.nav-pills li').hover(
       function () { //appearing on hover
         $('ul', this).fadeIn();

@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: CKAN\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-01-26 11:55+0000\n"
-"PO-Revision-Date: 2015-04-17 16:04-0500\n"
+"PO-Revision-Date: 2015-04-20 11:05-0500\n"
 "Last-Translator: \n"
 "Language-Team: French (http://www.transifex.com/projects/p/ckan/language/"
 "fr/)\n"
@@ -3147,9 +3147,10 @@ msgid ""
 "target=\"popover\" data-content=\"%(markdown_tooltip)s\" data-html=\"true"
 "\">Markdown formatting</a> here"
 msgstr ""
-"Vous pouvez utiliser la syntax <a href=\"#markdown\" title=\"Markdown quick "
-"reference\" data-target=\"popover\" data-content=\"%(markdown_tooltip)s\" "
-"data-html=\"true\">Markdown</a> pour formater votre texte."
+"Vous pouvez utiliser la syntax <a href=\"#markdown\" title=\"Utilisation de "
+"la syntaxe Markdown\" data-target=\"popover\" data-content="
+"\"%(markdown_tooltip)s\" data-html=\"true\">Markdown</a> pour formater votre "
+"texte."
 
 #: ckan/templates/macros/form.html:265
 msgid "This field is required"
@@ -3572,7 +3573,7 @@ msgstr "URL:"
 
 #: ckan/templates/package/resource_read.html:69
 msgid "From the dataset abstract"
-msgstr "Issu de l'abstract du jeu de données"
+msgstr "Extrait de la description du jeu de données parent:"
 
 #: ckan/templates/package/resource_read.html:71
 #, python-format
@@ -3932,7 +3933,7 @@ msgstr "Plus d'information"
 
 #: ckan/templates/package/snippets/resource_view.html:10
 msgid "Embed"
-msgstr "Embarquer sur un site"
+msgstr "Code embarqué (widget)"
 
 #: ckan/templates/package/snippets/resource_view.html:24
 msgid "This resource view is not available at the moment."
@@ -4076,8 +4077,9 @@ msgid ""
 " These are applications built with the datasets as well as ideas for things "
 "that could be done with them. "
 msgstr ""
-"Ce sont des applications construites à partir des jeux de données ou des "
-"idées de choses qui pourraient être faites avec."
+"Les applications, ou réutilisations de données, sont des applications en "
+"ligne ou mobile, des visualisations, des analyses ou tout autre production "
+"utilisant les jeux de données de Données Québec."
 
 #: ckan/templates/related/dashboard.html:58
 #: ckan/templates/snippets/search_form.html:70
@@ -5105,6 +5107,25 @@ msgstr "Quotidien"
 #: dynamic value
 msgid "active"
 msgstr "Actif"
+
+#: dynamic value
+msgid "Featured"
+msgstr "En vedette"
+
+#: dynamic value
+msgid ""
+"<pre><p>__Bold text__ or _italic text_</p><p># title<br>## secondary "
+"title<br>### etc</p><p>* list<br>* of<br>* items</p><p>http://auto.link.ed/</"
+"p></pre><p><b><a href='http://daringfireball.net/projects/markdown/syntax' "
+"target='_blank'>Full markdown syntax</a></b></p><p class='muted'><b>Please "
+"note:</b> HTML tags are stripped out for security reasons</p>"
+msgstr ""
+"<pre><p>__Texte en gras__, _Texte italique_</p><p># Titre<br>## Titre "
+"secondaire<br>### etc.</p><p>* Liste<br>* de différents<br>* éléments</"
+"p><p>http://lien.automatique.io/</p></pre><p><b><a href='http://fr.wikipedia."
+"org/wiki/Markdown#Formatage' target='_blank'>Description complète de la "
+"syntaxe Markdown</a></b></p><p class='muted'><b>Veuillez noter que pour des "
+"raisons de sécurité, les balises HTML seront supprimées automatiquement.</p>"
 
 #: ckanext/webpageview/theme/templates/webpage_form.html:3
 msgid "eg. http://example.com (if blank uses resource url)"
